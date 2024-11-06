@@ -151,11 +151,14 @@ resource "azurerm_storage_account" "azure_storgage_account" {
       bypass                     = var.network_rules.bypass
       ip_rules                   = var.network_rules.ip_rules
       virtual_network_subnet_ids = var.network_rules.virtual_network_subnet_ids
-      private_link_access {
+     dynamic private_link_access {
+      for_each = var.network_rules.private_link_access != null ? [var.network_rules.private_link_access] : []
+      content {
         endpoint_resource_id = var.network_rules.private_link_access.endpoint_resource_id
         endpoint_tenant_id   = var.network_rules.private_link_access.endpoint_tenant_id
       }
     }
+  }
   }
 
   dynamic "azure_files_authentication" {
