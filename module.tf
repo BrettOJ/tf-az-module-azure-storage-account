@@ -204,7 +204,7 @@ resource "azurerm_storage_account" "azure_storgage_account" {
 
 resource "azurerm_storage_container" "ss_cnt_obj" {
   for_each              = var.containers != null ? var.containers : {}
-  name                  = coalesce(each.value.name, module.sst_cnt_name.naming_convention_output[each.key].names.0)
+  name                  = each.value.key
   storage_account_name  = azurerm_storage_account.azure_storgage_account.name
   container_access_type = each.value.access_type
 }
