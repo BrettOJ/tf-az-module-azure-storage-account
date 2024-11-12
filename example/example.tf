@@ -7,11 +7,9 @@ locals {
 
   naming_convention_info = {
     name         = "001"
-    project_code = "knj"
+    site = "knj"
     env          = "dev"
-    zone         = "z1"
-    agency_code  = "konjur"
-    tier         = "dta"
+    app         = "z1"
   }
 }
 

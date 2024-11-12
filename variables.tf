@@ -367,11 +367,9 @@ variable "containers" {
 variable "naming_convention_info" {
   type = object({
     name         = string
-    project_code = string
+    site         = string
     env          = string
-    zone         = string
-    agency_code  = string
-    tier         = string
+    app          = string
   })
   description = "Naming convention information."
 }
